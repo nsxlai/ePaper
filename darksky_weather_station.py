@@ -6,7 +6,6 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 import commands
-# import epd2in7
 import time
 
 modeTest = False     # for desktop testing (no ePaper display), set the mode to True; for RPI with ePaper testing, set the mode to False
@@ -195,9 +194,9 @@ def weather_hourly_forecast(city, req_data):
         draw.text((x_start_pt + hour.index(i) * sp_mul, y_start_pt + 45), str(i['temperature']), font = font1, fill = 0)
         draw.text((x_start_pt + hour.index(i) * sp_mul, y_start_pt + 60), '+{} hr'.format(hour.index(i)), font = font1, fill = 0)
         
+    # Rotated the image 90 degree CCW. The 'expand' flag will ensure the rotation dimension is "expanded".
     rotated_image = image.rotate(90, expand = True)    # The expand flag will rotate the image size to the new format
-    # rotated_image.save('rotated_demo_image_new.bmp', 'bmp')
-    # epd.display_frame(epd.get_frame_buffer(Image.open('rotated_demo_image_new.bmp')))
+    rotated_image.save('rotated_hourly_forecast.bmp', 'bmp') # The image generation is not required but in case developing without the e-paper display
     
     if modeTest == False:
       epd.display_frame(epd.get_frame_buffer(rotated_image))
@@ -241,9 +240,9 @@ def weather_6day_forecast(city, req_data):
         draw.text((x_start_pt + day.index(i) * sp_mul, y_start_pt + 60), str(i['temperatureLow']), font = font1, fill = 0)
         draw.text((x_start_pt + day.index(i) * sp_mul, y_start_pt + 75), '+{}day'.format(day.index(i)), font = font1, fill = 0)
         
+    # Rotated the image 90 degree CCW. The 'expand' flag will ensure the rotation dimension is "expanded".
     rotated_image = image.rotate(90, expand = True)    # The expand flag will rotate the image size to the new format
-    # rotated_image.save('rotated_demo_image_new.bmp', 'bmp')
-    # epd.display_frame(epd.get_frame_buffer(Image.open('rotated_demo_image_new.bmp')))
+    rotated_image.save('rotated_6day_forecast.bmp', 'bmp')  # The image generation is not required but in case developing without the e-paper display
     
     if modeTest == False:
       epd.display_frame(epd.get_frame_buffer(rotated_image))
@@ -287,10 +286,6 @@ def sun_dial(city, req_data):
     #Vertical line
     draw.line((170, 0, 170, 60), fill = 0)
     
-    # sunrise_time = req_data['daily']['data'][0]['sunriseTime']
-    # sunset_time  = req_data['daily']['data'][0]['sunsetTime']
-    # print 'sunrise_time = {}'.format(sunrise_time)
-    # print 'sunrise_time = {}'.format(sunrise_time)
     date_stamp, sunrise_time_stamp = local_time(city, req_data['daily']['data'][0]['sunriseTime'])
     date_stamp, sunset_time_stamp  = local_time(city, req_data['daily']['data'][0]['sunsetTime'])
     # print 'Sunrise Time = {}'.format(sunrise_time_stamp)
@@ -302,18 +297,14 @@ def sun_dial(city, req_data):
     draw.text((65, 140), 'Sun sets  at {}'.format(sunset_time_stamp), font = font3, fill = 0)
     
     rotated_image = image.rotate(90, expand = True)    # The expand flag will rotate the image size to the new format
-    # rotated_image.save('rotated_demo_image_new.bmp', 'bmp')
-    # epd.display_frame(epd.get_frame_buffer(Image.open('rotated_demo_image_new.bmp')))
+    rotated_image.save('rotated_sun_dial.bmp', 'bmp') # The image generation is not required but in case developing without the e-paper display
     
     if modeTest == False:
       epd.display_frame(epd.get_frame_buffer(rotated_image))
     return
 
 if __name__ == '__main__':
-    # for city in location:
-    #     # print 'City: {}'.format(city)
-    #     req_data = get_weather_report(city, location[city]['latitude'], location[city]['longitude'])
-    #     print '-' * 20
+    '''e-Paper weather display Python code'''
     
     city = home_city
     req_data = get_weather_report(city, location[city]['latitude'], location[city]['longitude'])
@@ -356,6 +347,8 @@ if __name__ == '__main__':
             print '-' * 20
             sun_dial(city, req_data)
             time.sleep(0.2)
+            
+            ### The following code displays time from the Pi using "date" command
             # print 'Display time'
             # time_display(True)
             # keep_time = True
