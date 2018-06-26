@@ -29,11 +29,14 @@ Example code for the ePaper HAT: https://www.waveshare.com/w/upload/f/f5/2.7inch
 Tutorial Resource:
 ------------------
 1. Jeedom weather station tutorial: https://diyprojects.io/weather-station-epaper-displaydashboard-jeedom-raspberry-pi-via-json-rpc-api/#.WwSXBKkh3Sw
+
 ===> This tutorial uses the exact HW configuration (Raspberry Pi 3 and e-Paper HAT) but uses Jeedom weather API. This service doesn't seem to be working for US based users. Also the development is done in French for the most of the part.
 ===> jeedom_weather_station_demo.py: ePaper weather station tutorial code.
 2. Adafruit ESP8266 WiFi Weather Station with Color TFT Display: https://learn.adafruit.com/wifi-weather-station-with-tft-display?view=all
+
 ===> This tutorial uses WUnderground for weather API, which is no longer free.
 3. Adafruit Huzzah Weather Display: https://learn.adafruit.com/huzzah-weather-display?view=all
+
 ===> This tutorial uses Darksky.net for weather API. This service is free for the first 1000 API per day, which is ideal for this project. The main part of this project is using this API.
 
 Project detail:
@@ -45,15 +48,20 @@ there are plenty of online resources to follow. I use Raspbian Stretch since it 
    1. Initial setup for the Pi and prepare HW
    2. Sign up for the Darksky.net account
    3. Modify the weather_station.py code (add more destination cities, displaying temperature units in Celius or Fehrenheit).
-   4. Finalize the Pi.
+   4. Finalize the Pi for running headless mode (no display and USB keyboard/mouse).
 
 
 Phase 1:
 --------
-Once the Raspberry Pi is booted up with the Stretch Raspbian:
+At the time of writting this README, Stretch is the latest version of Rasbian. I use the full version for development purpose but the lite version may be better for the final headless running mode.
 
-1. Open a terminal window and enter "sudo raspi-config" to configure the Pi. Set localization (Change Internationalization: Locale (e.g., US = en.UTF-8, keyboard, and WIFI location)
-2. Enable SSH and I2C bus
-3. 
-4. Reboot the Pi
-5. Update the Pi: ===> $ sudo apt-get update && sudo apt-get upgrade -y
+Connect display and USB keyboard/mouse for configuration purpose. Once the Raspberry Pi is booted up with the Stretch Raspbian:
+1. Update the Pi: ===> $ sudo apt-get update && sudo apt-get upgrade -y
+2. Enter raspi-config utility.
+3. Change the password.
+4. Set localization (Change Internationalization: Locale (e.g., US = en.UTF-8, keyboard, and WIFI location).
+5. Enable SSH.
+6. Enable I2C.
+7. Reboot the Pi.
+8. Adjust date/time: timezone (tzselect), date (sudo date +%Y%m%d -s ‘20120418'), and time (sudo date +%T -s '11:14:00')
+9. Install required packages for the project
