@@ -1,5 +1,6 @@
 # ePaper
 Weather Station with ePaper Display Project (05/2018)
+![text](https://github.com/nsxlai/ePaper/blob/master/IMG_20180611_230516.jpg)
 
 HW Requirement:
 ---------------
