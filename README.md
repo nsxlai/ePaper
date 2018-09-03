@@ -66,3 +66,10 @@ Connect display and USB keyboard/mouse for configuration purpose. Once the Raspb
 7. Reboot the Pi.
 8. Adjust date/time: timezone (tzselect), date (sudo date +%Y%m%d -s ‘20120418'), and time (sudo date +%T -s '11:14:00')
 9. Install required packages for the project
+
+## Phase 2:
+
+## Phase 3:
+
+## Phase 4:
+1. Reduce the memory split between the GPU and the rest of the system down to 16mb.
