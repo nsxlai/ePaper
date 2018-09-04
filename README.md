@@ -73,3 +73,9 @@ Connect display and USB keyboard/mouse for configuration purpose. Once the Raspb
 
 ## Phase 4:
 1. Reduce the memory split between the GPU and the rest of the system down to 16mb.
+
+## What's next?
+There are several ideas to imporve this weather station:
+1. Use the utility developed for the e-paper display to shorten the refresh time. The utility was done in C so it should be better handle the display changes. The current Python method refreash rate is about 1 to 2 seconds (slow!) after the button press is registered.
+2. Dockerize the project
+3. Substitute the Raspberry Pi 3+ with Raspberry Pi Zero W. The Pi Zero W should be better suited for this applicate since the weather station project is not CPU intensive.
