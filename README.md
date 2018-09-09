@@ -70,12 +70,12 @@ Note: At the time of documenting this README, I am using the Rasbian Stretch ima
 
 ## Phase 2:
 1. Install the following library for the project:
-sudo apt-get install python-dev python-pil python-imaging
-sudo apt-get install python-smbus python-serial
-pip install spidev
-wget https://www.waveshare.com/w/upload/f/f5/2.7inch-e-paper-hat-code.7z
-sudo apt-get install p7zip-full
-7za e 2.7inch-e-paper-hat-code.7z
+=> sudo apt-get install python-dev python-pil python-imaging
+=> sudo apt-get install python-smbus python-serial
+=> pip install spidev
+=> wget https://www.waveshare.com/w/upload/f/f5/2.7inch-e-paper-hat-code.7z
+=> sudo apt-get install p7zip-full
+=> 7za e 2.7inch-e-paper-hat-code.7z
 
 ## Phase 3: Install Docker
 2. Update Packages:
