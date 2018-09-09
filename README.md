@@ -65,11 +65,45 @@ Connect display and USB keyboard/mouse for configuration purpose. Once the Raspb
 6. Enable I2C.
 7. Reboot the Pi.
 8. Adjust date/time: timezone (tzselect), date (sudo date +%Y%m%d -s ‘20120418'), and time (sudo date +%T -s '11:14:00')
-9. Install required packages for the project
+
+Note: At the time of documenting this README, I am using the Rasbian Stretch image release in June. The new feature released in this version of the Stretch image is that it includes first time setup process during the first boot. The password, WIFI, country, and time zone setting will be prompt for change. At the end, the first time setup dialogue will have the option to perform apt-get update && apt-get upgrade before rebooting. After the reboot, just enable the I2C, SPI, and SSH via raspi-config utilty.
 
 ## Phase 2:
+1. Install the following library for the project:
+sudo apt-get install python-dev python-pil python-imaging
+sudo apt-get install python-smbus python-serial
+pip install spidev
+wget https://www.waveshare.com/w/upload/f/f5/2.7inch-e-paper-hat-code.7z
+sudo apt-get install p7zip-full
+7za e 2.7inch-e-paper-hat-code.7z
 
-## Phase 3:
+## Phase 3: Install Docker
+2. Update Packages:
+
+Update Raspberry Pi packages using the following command –
+sudo apt-get update && sudo apt-get upgrade
+3. Install Docker:
+
+Install Docker using following command –
+curl -sSL https://get.docker.com | sh
+4. Add permission to Pi User to run Docker Commands:
+
+Add “pi” user to “docker” group using the following command –
+sudo usermod -aG docker pi
+You must Log off from Raspberry Pi and Login again, for this to take effect.
+5. Verify Installation:
+
+Check Docker installation using the “docker –version” command. If you see the correct version, you are good to go.
+pi@RaPi1:~ $ docker --version
+Docker version 17.05.0-ce, build 89658be
+pi@RaPi1:~ $
+6. Run Hello-World Program:
+
+Run the ARM-based “hello-word” Docker container using “docker run armhf/hello-world” command. All the Docker Images under the namespace armhf are created by Docker team.
+You can NOT run the default “hello-world” container (using “docker run hello-world”command) on Raspberry Pi as it is created for X86 Architecture and won’t work on ARM architecture based Raspberry Pi.
+On successful execution, you should see following output on your Raspberry Pi –
+pi@RaPi1:~ $ docker run armhf/hello-world
+
 
 ## Phase 4:
 1. Reduce the memory split between the GPU and the rest of the system down to 16mb.
