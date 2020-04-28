@@ -30,15 +30,14 @@ Example code for the ePaper HAT: https://www.waveshare.com/w/upload/f/f5/2.7inch
 Tutorial Resource:
 ------------------
 1. Jeedom weather station tutorial: https://diyprojects.io/weather-station-epaper-displaydashboard-jeedom-raspberry-pi-via-json-rpc-api/#.WwSXBKkh3Sw
+==> This tutorial uses the exact HW configuration (Raspberry Pi 3 and e-Paper HAT) but uses Jeedom weather API. This service doesn't seem to be working for US based users. Also the development is done in French for the most of the part.
+==> jeedom_weather_station_demo.py: ePaper weather station tutorial code.
 
-===> This tutorial uses the exact HW configuration (Raspberry Pi 3 and e-Paper HAT) but uses Jeedom weather API. This service doesn't seem to be working for US based users. Also the development is done in French for the most of the part.
-===> jeedom_weather_station_demo.py: ePaper weather station tutorial code.
 2. Adafruit ESP8266 WiFi Weather Station with Color TFT Display: https://learn.adafruit.com/wifi-weather-station-with-tft-display?view=all
+==> This tutorial uses WUnderground for weather API, which is no longer free.
 
-===> This tutorial uses WUnderground for weather API, which is no longer free.
 3. Adafruit Huzzah Weather Display: https://learn.adafruit.com/huzzah-weather-display?view=all
-
-===> This tutorial uses Darksky.net for weather API. This service is free for the first 1000 API per day, which is ideal for this project. The main part of this project is using this API.
+==> This tutorial uses Darksky.net for weather API. This service is free for the first 1000 API per day, which is ideal for this project. The main part of this project is using this API.
 
 Project detail:
 ---------------
